@@ -1,0 +1,792 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2980, #26d0ce);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #1a2980;
+}
+
+h1 {
+    color: #1a2980;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Настройка игры */
+.game-setup {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.setup-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.option {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option h3 {
+    color: #1a2980;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+/* Поля ввода */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #1a2980;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 41, 128, 0.1);
+}
+
+/* Кнопки */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1a2980, #26d0ce);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26, 41, 128, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #333;
+}
+
+/* Стили для фазы расстановки */
+.placement-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.placement-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.ship-list {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.ship-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ship-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.placement-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.ship-selection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Кнопки выбора кораблей */
+.btn-ship {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 2px solid #1a2980;
+    background: white;
+    color: #1a2980;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn-ship:hover {
+    background: #1a2980;
+    color: white;
+}
+
+/* Кнопки выбора корабля */
+.btn-ship.selected {
+    background: #1a2980 !important;
+    color: white !important;
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Разные цвета для превью разного размера */
+.cell.preview-4 { background-color: rgba(255, 0, 0, 0.3) !important; }
+.cell.preview-3 { background-color: rgba(0, 128, 0, 0.3) !important; }
+.cell.preview-2 { background-color: rgba(0, 0, 255, 0.3) !important; }
+.cell.preview-1 { background-color: rgba(255, 165, 0, 0.3) !important; }
+
+
+.orientation {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.orientation label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.orientation label:hover {
+    background-color: #f0f0f0;
+}
+
+.orientation input {
+    margin-right: 5px;
+    width: auto;
+}
+
+
+.placement-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.placement-board {
+    margin-top: 20px;
+}
+
+/* Подсказка */
+.hint {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Для подсветки выбранного корабля */
+.ship-selected {
+    border-color: #ffcc00 !important;
+    background-color: #fff9e6 !important;
+}
+
+/* Игровые доски */
+.game-container {
+    margin-top: 30px;
+}
+
+.game-header {
+    background: #1a2980;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.boards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.board-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    margin: 20px 0;
+    width: 400px;
+    height: 400px;
+}
+
+.cell {
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.cell:hover {
+    background-color: #f0f8ff;
+}
+
+.cell.ship {
+    background-color: #4682b4 !important;
+    border-color: #36648b !important;
+    position: relative;
+}
+
+.cell.ship::after {
+    content: "🚢";
+    font-size: 12px;
+}
+
+/* Для предпросмотра размещения корабля */
+.cell.preview {
+    background-color: rgba(70, 130, 180, 0.5) !important;
+    border: 2px dashed #4682b4 !important;
+}
+
+.cell.preview-invalid {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+    border: 2px dashed #ff0000 !important;
+}
+
+.cell.player-ship {
+    background-color: rgba(70, 130, 180, 0.7) !important;
+    border-color: #1a4d80 !important;
+}
+
+.cell.player-ship:hover {
+    background-color: rgba(70, 130, 180, 0.9) !important;
+}
+
+/* Потопленные корабли */
+.cell.sunk {
+    background-color: #8B0000 !important;
+    border-color: #000 !important;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.cell.sunk.player-ship {
+    background-color: rgba(139, 0, 0, 0.8) !important;
+}
+
+/* Клетки с кораблями противника (видно только при попадании) */
+.cell.hit:not(.sunk) {
+    background-color: #ff4444 !important;
+    border-color: #cc0000 !important;
+}
+
+.cell.hit:not(.sunk)::after {
+    content: "💥";
+}
+
+.cell.hit {
+    background-color: #ff4444 !important;
+    border-color: #cc0000 !important;
+}
+
+.cell.miss {
+    background-color: rgba(135, 206, 235, 0.5) !important;
+    border-color: #4682b4 !important;
+}
+
+.cell.hit::after {
+    content: "💥";
+    font-size: 18px;
+}
+
+.cell.miss::after {
+    content: "⭕";
+    font-size: 14px;
+    color: #4682b4;
+}
+
+/* Легенда */
+.ship-legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ship-cell, .hit-cell, .miss-cell {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+
+.ship-cell {
+    background-color: #4682b4;
+}
+
+.hit-cell {
+    background-color: #ff4444;
+}
+
+.miss-cell {
+    background-color: #87ceeb;
+}
+
+/* Журнал игры */
+.game-log {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.log-content {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 15px;
+    background: white;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.log-entry {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-family: monospace;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+#placementBoard .cell.ship {
+    background-color: #4682b4 !important;
+    border: 2px solid #36648b !important;
+}
+
+#placementBoard .cell.ship::after {
+    content: "🚢";
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .setup-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .boards {
+        grid-template-columns: 1fr;
+    }
+    
+    .board-grid {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+/* Лобби для мультиплеера */
+.lobby-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 3px solid #1a2980;
+}
+
+.lobby-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.player-list {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.player-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #6c757d;
+}
+
+.player-item.waiting {
+    border-left-color: #ffc107;
+}
+
+.player-item.ready {
+    border-left-color: #28a745;
+}
+
+.player-name {
+    font-weight: 600;
+    color: #1a2980;
+}
+
+.player-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background: #e9ecef;
+    color: #495057;
+}
+
+.player-item.ready .player-status {
+    background: #d4edda;
+    color: #155724;
+}
+
+.player-item.waiting .player-status {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.lobby-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lobby-messages {
+    grid-column: 1 / -1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.message {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+/* Чат в лобби */
+.lobby-chat {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+    height: 200px;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+}
+
+/* Заголовок для расстановки в мультиплеере */
+.placement-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.opponent-status {
+    padding: 10px;
+    background: #fff3cd;
+    border-radius: 6px;
+    border: 1px solid #ffeaa7;
+    font-size: 0.9rem;
+}
+
+.opponent-status span {
+    font-weight: 600;
+    color: #856404;
+}
+
+.cell.processing {
+    background-color: #ffc107 !important;
+    animation: pulse 0.5s infinite alternate;
+    color: #000;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+@keyframes pulse {
+    from { 
+        opacity: 0.7; 
+        transform: scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+/* Иконки и украшения для кнопок */
+#copyCodeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #1ba87e);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+/* Статус игры в мультиплеере */
+#gameTypeIndicator {
+    font-weight: 600;
+    color: #1a2980;
+    padding: 5px 10px;
+    background: #e7f3ff;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Анимации для уведомлений */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Адаптивность для лобби */
+@media (max-width: 768px) {
+    .lobby-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .player-list {
+        order: 1;
+    }
+    
+    .lobby-controls {
+        order: 2;
+    }
+    
+    .lobby-messages {
+        order: 3;
+    }
+}
+
+/* Индикатор загрузки */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #1a2980;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Улучшенные подсказки */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #1a2980;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Стили для счетчиков кораблей */
+.total-ships {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a2980;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+/* Кнопка копирования кода */
+#copyCodeBtn.copied {
+    background: #28a745 !important;
+    animation: pulse 0.5s;
+}
+
+/* Уведомления о ходе */
+.turn-notification {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeInUp 0.5s ease-out;
+}

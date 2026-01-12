@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: battleship_arena
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+      - "5002:5002"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./static:/app/static
+      - ./templates:/app/templates
+    restart: unless-stopped
+    command: >
+      sh -c "python app.py"
+    networks:
+      - battleship-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: battleship_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/usr/share/nginx/html:ro
+    depends_on:
+      - web
+    networks:
+      - battleship-network
+
+networks:
+  battleship-network:
+    driver: bridge
